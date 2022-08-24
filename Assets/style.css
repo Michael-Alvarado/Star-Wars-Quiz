@@ -1,0 +1,195 @@
+:root {
+    --charcoal: #495159;
+    --magic-mint: #A1E8CC;
+    --space-cadet: #2E294E;
+    --african-violet: #B07BAC;
+    --unbleached-silk: #FFD9CE;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    /* set 1rem to 10px instead of native 16px to make it easier to calculate font-size values 
+    for the rest of the page (e.g. 1.6rem is 16px, 2.0rem is 20px, etc.) */
+    font-size: 62.5%;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--charcoal);
+    font-size: 1.75rem;
+}
+
+header {
+    margin: 0 auto;
+    padding: 2.5rem;
+}
+
+main {
+    margin: .5rem auto;
+}
+
+footer {
+    padding: 2.5rem;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 5rem;
+    text-align: center;
+    color: var(--magic-mint);
+
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 3rem;
+    padding: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+}
+
+p {
+    font-size: 2rem;
+    padding: 2rem;
+}
+
+a {
+    font-size: 1.5rem;
+    color: var(--african-violet);
+}
+
+#frame {
+    display: block;
+    margin: 3rem;
+    text-align: center;
+    flex-direction: column;
+    box-shadow: 0 0.5rem 1rem 0 var(--african-violet);
+    justify-content: center;
+    min-height: 100%;
+    padding: 2rem;
+    color: var(--space-cadet);
+    background-color: var(--unbleached-silk);
+    visibility: hidden;
+}
+
+.feedFrame {
+    display:block;
+    margin: 0 auto;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100%;
+    padding: 2rem;
+    color: var(--magic-mint);
+    font-style: italic;
+    font-size: 2rem;
+}
+
+#highForm {
+    margin: 1rem auto;
+    visibility: hidden;
+}
+
+header ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding-inline-end: 40px;
+}
+
+header li {
+    display: inline;
+}
+
+footer ul {
+    text-align: center;
+    list-style: none;
+    
+}
+
+#timer {
+    text-align: right;
+    color: var(--african-violet);
+    font-size: 2rem;
+    font-weight: bold;
+}
+.topLine {
+    display: flex;
+    justify-content: center;
+
+}
+
+#highscores {
+    background-color: var(--charcoal);
+    color: var(--african-violet);
+    text-align: left;
+    font-size: 2rem;
+    font-weight: bold;
+    width: fit-content;
+    height: 3rem;
+    border: none;
+}
+
+#quizStarter {
+    text-align: center;
+    width: fit-content;
+    height: 5rem;
+    background-color: var(--african-violet);
+    color: var(--space-cadet);
+    font-weight: bolder;
+    font-size: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 1rem 1rem 0 var(--space-cadet);
+}
+
+#firstAnswer {
+    text-align: center;
+    width: fit-content;
+    height: 3rem;
+    background-color: var(--african-violet);
+    color: var(--magic-mint);
+    font-weight: bolder;
+    font-size: 1.5rem;
+    box-shadow: 0 1rem 1rem 0 var(--space-cadet);
+}
+
+#secondAnswer {
+    text-align: center;
+    width: fit-content;
+    height: 3rem;
+    background-color: var(--african-violet);
+    color: var(--magic-mint);
+    font-weight: bolder;
+    font-size: 1.5rem;
+    box-shadow: 0 1rem 1rem 0 var(--space-cadet);
+}
+
+#thirdAnswer {
+    text-align: center;
+    width: fit-content;
+    height: 3rem;
+    background-color: var(--african-violet);
+    color: var(--magic-mint);
+    font-weight: bolder;
+    font-size: 1.5rem;
+    box-shadow: 0 1rem 1rem 0 var(--space-cadet);
+}
+
+#fourthAnswer {
+    text-align: center;
+    width: fit-content;
+    height: 3rem;
+    background-color: var(--african-violet);
+    color: var(--magic-mint);
+    font-weight: bolder;
+    font-size: 1.5rem;
+    box-shadow: 0 1rem 1rem 0 var(--space-cadet);
+}

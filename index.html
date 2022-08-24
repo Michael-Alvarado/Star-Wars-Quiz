@@ -11,19 +11,34 @@
 
     <body>
         <header>
-            <h1>Coding Quiz Challenge</h1>
-            <p>Try to answer the following code-related questions within the time limit. 
-                Keep in mind that incorrect answers will penalize your time by ten seconds.
-            </p> 
-
+            <ul>
+                <li><button id="highscores">View Highscores</button></li>
+                <li id="timer">Time: 60</li>
+            </ul>
         </header>
-
-        <main>
-
-        </main>
-
+        <h1>Coding Quiz Challenge</h1>
+        <div class="topLine">
+            <button id="quizStarter">Start Quiz</button>
+        </div>
+        <div id="frame">
+            <h4 id="questions"></h4>
+            <div class="answers">
+                <button id="firstAnswer"></button>
+                <button id="secondAnswer"></button>
+                <button id="thirdAnswer"></button>
+                <button id="fourthAnswer"></button>
+            </div>
+            <form id="highForm">
+                <label for="initials">Initials: </label>
+                <input type="text" name="initials" id="initials" placeholder="ABC" />
+                <button id="submit">Submit</button>
+            </form>
+        </div>
         <footer>
-
+            <div class="feedFrame">
+                <h5 id="feedback"></h5>
+                <ul id="recordList"></ul>
+            </div>
         </footer>
         <script src="./Assets/script.js"></script>
     </body>
