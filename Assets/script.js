@@ -1,5 +1,5 @@
 var timer = document.getElementById('timer');
-var timeLeft = 60;
+var timeLeft;
 var timeInterval;
 const startButton = document.getElementById('quizStarter');
 const highscoreBtn = document.getElementById('highscores');
@@ -14,13 +14,36 @@ var initialsInput = document.querySelector('#initials');
 var recordList = document.querySelector('#recordList');
 var questSet = document.getElementById('questions');
 var feedback = document.getElementById('feedback');
-var questCount = 0;
+var questCount;
 var records = [];
 
+// Creating a restart button to display at the end of the quiz
+var restartBtn = document.createElement('button');
+restartBtn.textContent = 'Restart Quiz';
+restartBtn.style.display = 'none';
+frame.append(restartBtn);
 
+restartBtn.addEventListener('click', function(event) {
+
+    highForm.style.visibility = 'hidden';
+    
+    firAnsBtn.style.display = 'initial';
+    secAnsBtn.style.display = 'initial';
+    thiAnsBtn.style.display = 'initial';
+    fouAnsBtn.style.display = 'initial';
+
+    restartBtn.style.display = 'none';
+    
+    startTimer();
+    startQuiz();
+});
+
+// Adding event listener to highscore button to call viewHighscores function.
 highscoreBtn.addEventListener('click', function(event) {
     viewHighscores();
 });
+
+// Adding event listener to start button to enable quiz to start
 startButton.addEventListener('click', function(event) {
     
     startButton.style.visibility = 'hidden';
@@ -30,28 +53,13 @@ startButton.addEventListener('click', function(event) {
     startQuiz();
 });
 
+// Function to start the countdown timer for the quiz and enable event listeners for answer buttons
 function startTimer () {
+    timeLeft = 60;
+    questCount = 0;
     timeInterval = setInterval(countdown, 1000);
-}
-
-function countdown() {
-        timeLeft--;
-        timer.innerText = "Time: " + timeLeft;
-
-        if (timeLeft === 0) {
-            clearInterval(timeInterval);
-            timer.style.display = 'none';
-            highscores();
-        }
-}
-
-function firstQuestion() {
-    questSet.textContent = "Choose letter b."
-    firAnsBtn.textContent = "a";
-    secAnsBtn.textContent = "b";
-    thiAnsBtn.textContent = "c";
-    fouAnsBtn.textContent = "d";
-
+    
+    // Event listener for first answer button, setting right/wrong conditions as well
     firAnsBtn.addEventListener('click', function(event) {
         var element = event.target;
 
@@ -61,6 +69,8 @@ function firstQuestion() {
             wrongAns();
         }
     });
+
+    // Event listener for second answer button, setting right/wrong conditions as well
     secAnsBtn.addEventListener('click', function(event) {
         var element = event.target;
 
@@ -70,6 +80,8 @@ function firstQuestion() {
             wrongAns();
         }
     });
+
+    // Event listener for third answer button, setting right/wrong conditions as well
     thiAnsBtn.addEventListener('click', function(event) {
         var element = event.target;
 
@@ -79,6 +91,8 @@ function firstQuestion() {
             wrongAns();
         }
     });
+
+    // Event listener for fourth answer button, setting right/wrong conditions as well
     fouAnsBtn.addEventListener('click', function(event) {
         var element = event.target;
 
@@ -90,6 +104,28 @@ function firstQuestion() {
     });
 }
 
+// Function for counting down timer on quiz
+function countdown() {
+        timeLeft--;
+        timer.innerText = "Time: " + timeLeft;
+
+        if (timeLeft === 0) {
+            clearInterval(timeInterval);
+            timer.style.display = 'none';
+            highscores();
+        }
+}
+
+// Setting context for first question
+function firstQuestion() {
+    questSet.textContent = "Choose letter b."
+    firAnsBtn.textContent = "a";
+    secAnsBtn.textContent = "b";
+    thiAnsBtn.textContent = "c";
+    fouAnsBtn.textContent = "d";
+}
+
+// Setting context for second question
 function secondQuestion() {
     questSet.textContent = "Choose number 1."
     firAnsBtn.textContent = "1";
@@ -98,6 +134,7 @@ function secondQuestion() {
     fouAnsBtn.textContent = "4";
 }
 
+// Setting context for third question
 function thirdQuestion() {
     questSet.textContent = "Choose letter q."
     firAnsBtn.textContent = "p";
@@ -106,6 +143,7 @@ function thirdQuestion() {
     fouAnsBtn.textContent = "s";
 }
 
+// Setting context for fourth question
 function fourthQuestion() {
     questSet.textContent = "Choose number 17."
     firAnsBtn.textContent = "7";
@@ -114,6 +152,7 @@ function fourthQuestion() {
     fouAnsBtn.textContent = "17";
 }
 
+// Setting context for fifth question
 function fifthQuestion() {
     questSet.textContent = "Choose letter x."
     firAnsBtn.textContent = "s";
@@ -122,6 +161,7 @@ function fifthQuestion() {
     fouAnsBtn.textContent = "y";
 }
 
+// This function captures initials and stores them with the remaining time to local storage
 function highscores() {
     firAnsBtn.style.display = 'none';
     secAnsBtn.style.display = 'none';
@@ -141,33 +181,15 @@ function highscores() {
         };
 
         localStorage.setItem("user", JSON.stringify(user));
+        initialsInput.value = '';
     })
 
     viewHighscores();
 
-    var restartBtn = document.createElement('button');
-    restartBtn.textContent = 'Restart Quiz';
-    frame.append(restartBtn);
-
-    restartBtn.addEventListener('click', function(event) {
-        timeLeft = 60;
-        questCount = 0; 
-
-        highForm.style.visibility = 'hidden';
-        
-        firAnsBtn.style.display = 'initial';
-        secAnsBtn.style.display = 'initial';
-        thiAnsBtn.style.display = 'initial';
-        fouAnsBtn.style.display = 'initial';
-
-        restartBtn.style.display = 'none';
-        
-        startTimer();
-        startQuiz();
-    });
-
+    restartBtn.style.display = 'initial';
 }
 
+// Sets feedback for when correct answer is selected
 function rightAns() {
     feedback.textContent = 'correct!';
     feedback.style.visibility = 'visible'; 
@@ -177,6 +199,7 @@ function rightAns() {
     startQuiz();
 }
 
+// Sets feedback for when incorrect answer is selected
 function wrongAns() {
     feedback.textContent = 'wrong answer!';
     feedback.style.visibility = 'visible';
@@ -192,6 +215,7 @@ function wrongAns() {
     startQuiz();
 }
 
+// This function calls the question based on the status of the question counter
 function startQuiz() {
     if (questCount === 0) {
         questCount++;
@@ -213,13 +237,13 @@ function startQuiz() {
     }
 }
 
+// Display highscores in footer of page
 function viewHighscores() {
     var storedHighscores = JSON.parse(localStorage.getItem("user"));
 
     if (storedHighscores !== null) {
         records.push(storedHighscores);
     }
-    console.log(records.indexOf('MHA') + " " + records.indexOf(56));
 
     for (var i=0; i<records.length; i++) {
 
