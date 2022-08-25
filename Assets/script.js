@@ -38,7 +38,7 @@ restartBtn.addEventListener('click', function(event) {
     startQuiz();
 });
 
-// Adding event listener to highscore button to call viewHighscores function.
+// Adding event listener to highscore button to call view Highscores function.
 highscoreBtn.addEventListener('click', function(event) {
     viewHighscores();
 });
@@ -161,6 +161,54 @@ function fifthQuestion() {
     fouAnsBtn.textContent = "y";
 }
 
+// Sets feedback for when correct answer is selected
+function rightAns() {
+    feedback.textContent = 'correct!';
+    feedback.style.visibility = 'visible'; 
+    setTimeout(function() {
+        feedback.style.visibility = 'hidden';
+    },2000)
+    startQuiz();
+}
+
+// Sets feedback for when incorrect answer is selected
+function wrongAns() {
+    feedback.textContent = 'wrong answer!';
+    feedback.style.visibility = 'visible';
+    setTimeout(function() {
+        feedback.style.visibility = 'hidden';
+    },2000)
+
+    if (timeLeft < 10) {
+        timeLeft = 1;
+    } else {
+        timeLeft -= 10;
+    }
+    startQuiz();
+}
+
+// This function calls the question based on the status of the question counter
+function startQuiz() {
+    if (questCount === 0) {
+        questCount++;
+        firstQuestion();
+    } else if (questCount === 1) {
+        questCount++;
+        secondQuestion();
+    } else if (questCount === 2) {
+        questCount++;
+        thirdQuestion();
+    } else if (questCount === 3) {
+        questCount++;
+        fourthQuestion();
+    } else if (questCount === 4) {
+        questCount++;
+        fifthQuestion();
+    } else {
+        highscores();
+    }
+}
+
 // This function captures initials and stores them with the remaining time to local storage
 function highscores() {
     firAnsBtn.style.display = 'none';
@@ -189,58 +237,14 @@ function highscores() {
     restartBtn.style.display = 'initial';
 }
 
-// Sets feedback for when correct answer is selected
-function rightAns() {
-    feedback.textContent = 'correct!';
-    feedback.style.visibility = 'visible'; 
-    setTimeout(function() {
-        feedback.style.visibility = 'hidden';
-    },2000)
-    startQuiz();
-}
-
-// Sets feedback for when incorrect answer is selected
-function wrongAns() {
-    feedback.textContent = 'wrong answer!';
-    feedback.style.visibility = 'visible';
-    setTimeout(function() {
-        feedback.style.visibility = 'hidden';
-    },2000)
-
-    if (timeLeft < 10) {
-        timeLeft = 1;
-    } else {
-        timeLeft - 10;
-    }
-    startQuiz();
-}
-
-// This function calls the question based on the status of the question counter
-function startQuiz() {
-    if (questCount === 0) {
-        questCount++;
-        firstQuestion();
-    } else if (questCount === 1) {
-        questCount++;
-        secondQuestion();
-    } else if (questCount === 2) {
-        questCount++;
-        thirdQuestion();
-    } else if (questCount === 3) {
-        questCount++;
-        fourthQuestion();
-    } else if (questCount === 4) {
-        questCount++;
-        fifthQuestion();
-    } else {
-        highscores();
-    }
-}
-
 // Display highscores in footer of page
 function viewHighscores() {
     var storedHighscores = JSON.parse(localStorage.getItem("user"));
 
+    while (recordList.firstChild) {
+        recordList.removeChild(recordList.firstChild);
+    }
+    
     if (storedHighscores !== null) {
         records.push(storedHighscores);
     }
