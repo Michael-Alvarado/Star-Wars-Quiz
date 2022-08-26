@@ -23,6 +23,18 @@ restartBtn.textContent = 'Restart Quiz';
 restartBtn.style.display = 'none';
 frame.append(restartBtn);
 
+submitBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    var user = {
+        initials: initialsInput.value.trim(),
+        score: timeLeft,
+    };
+
+    localStorage.setItem("user", JSON.stringify(user));
+    initialsInput.value = '';
+})
+
 // Restart the quiz, hide the form and show the answer buttons, then call functions to run quiz
 restartBtn.addEventListener('click', function(event) {
 
@@ -112,7 +124,6 @@ function countdown() {
 
         if (timeLeft === 0) {
             clearInterval(timeInterval);
-            timer.style.display = 'none';
             highscores();
         }
 }
@@ -217,21 +228,10 @@ function highscores() {
     thiAnsBtn.style.display = 'none';
     fouAnsBtn.style.display = 'none';
     clearInterval(timeInterval);
+    timer.style.display = 'none';
     highForm.style.visibility = 'visible';
     
     questSet.textContent = "Enter your initials:";
-
-    submitBtn.addEventListener('click', function(event) {
-        event.preventDefault();
-
-        var user = {
-            initials: initialsInput.value.trim(),
-            score: timeLeft
-        };
-
-        localStorage.setItem("user", JSON.stringify(user));
-        initialsInput.value = '';
-    })
 
     viewHighscores();
 
