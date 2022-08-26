@@ -114,7 +114,8 @@ startButton.addEventListener('click', function(event) {
 function startTimer () {
     timeLeft = 60;
     questCount = 0;
-    timer.style.display = 'initial';
+    timer.style.visibility = 'visible';
+    timer.innerText = "Time: " + timeLeft;
     timeInterval = setInterval(countdown, 1000);
 }
 
@@ -229,7 +230,7 @@ function highscores() {
     thiAnsBtn.style.display = 'none';
     fouAnsBtn.style.display = 'none';
     clearInterval(timeInterval);
-    timer.style.display = 'none';
+    timer.style.visibility = 'hidden';
     highForm.style.visibility = 'visible';
     
     questSet.textContent = "Enter your initials:";
