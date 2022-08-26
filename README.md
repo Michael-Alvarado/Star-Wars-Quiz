@@ -16,5 +16,5 @@ Challenge was to create an quiz that had a start button, multiple questions, and
 
 ## Links <a name = "Links"></a>
 
-[Site Link](https://michael-alvarado.github.io/Code-Quiz/)
-[Repository Link](https://github.com/Michael-Alvarado/Code-Quiz)
+-[Site Link](https://michael-alvarado.github.io/Code-Quiz/)
+-[Repository Link](https://github.com/Michael-Alvarado/Code-Quiz)
