@@ -114,6 +114,7 @@ startButton.addEventListener('click', function(event) {
 function startTimer () {
     timeLeft = 60;
     questCount = 0;
+    timer.style.display = 'initial';
     timeInterval = setInterval(countdown, 1000);
 }
 
