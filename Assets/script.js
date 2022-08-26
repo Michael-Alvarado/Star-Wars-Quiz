@@ -33,6 +33,8 @@ submitBtn.addEventListener('click', function(event) {
 
     localStorage.setItem("user", JSON.stringify(user));
     initialsInput.value = '';
+
+    viewHighscores();
 })
 
 // Restart the quiz, hide the form and show the answer buttons, then call functions to run quiz
