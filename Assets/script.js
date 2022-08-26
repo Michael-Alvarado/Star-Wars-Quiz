@@ -23,6 +23,7 @@ restartBtn.textContent = 'Restart Quiz';
 restartBtn.style.display = 'none';
 frame.append(restartBtn);
 
+// Restart the quiz, hide the form and show the answer buttons, then call functions to run quiz
 restartBtn.addEventListener('click', function(event) {
 
     highForm.style.visibility = 'hidden';
@@ -36,6 +37,50 @@ restartBtn.addEventListener('click', function(event) {
     
     startTimer();
     startQuiz();
+});
+
+// Event listener for first answer button, setting right/wrong conditions as well
+firAnsBtn.addEventListener('click', function(event) {
+    var element = event.target;
+
+    if (questCount === 2) {
+        rightAns();
+    } else {
+        wrongAns();
+    }
+});
+
+// Event listener for second answer button, setting right/wrong conditions as well
+secAnsBtn.addEventListener('click', function(event) {
+    var element = event.target;
+
+    if (questCount === 1 || questCount === 3) {
+        rightAns();
+    } else {
+        wrongAns();
+    }
+});
+
+// Event listener for third answer button, setting right/wrong conditions as well
+thiAnsBtn.addEventListener('click', function(event) {
+    var element = event.target;
+
+    if (questCount === 5) {
+        rightAns();
+    } else {
+        wrongAns();
+    }
+});
+
+// Event listener for fourth answer button, setting right/wrong conditions as well
+fouAnsBtn.addEventListener('click', function(event) {
+    var element = event.target;
+
+    if (questCount === 4) {
+        rightAns();
+    } else {
+        wrongAns();
+    }
 });
 
 // Adding event listener to highscore button to call view Highscores function.
@@ -58,50 +103,6 @@ function startTimer () {
     timeLeft = 60;
     questCount = 0;
     timeInterval = setInterval(countdown, 1000);
-    
-    // Event listener for first answer button, setting right/wrong conditions as well
-    firAnsBtn.addEventListener('click', function(event) {
-        var element = event.target;
-
-        if (questCount === 2) {
-            rightAns();
-        } else {
-            wrongAns();
-        }
-    });
-
-    // Event listener for second answer button, setting right/wrong conditions as well
-    secAnsBtn.addEventListener('click', function(event) {
-        var element = event.target;
-
-        if (questCount === 1 || questCount === 3) {
-            rightAns();
-        } else {
-            wrongAns();
-        }
-    });
-
-    // Event listener for third answer button, setting right/wrong conditions as well
-    thiAnsBtn.addEventListener('click', function(event) {
-        var element = event.target;
-
-        if (questCount === 5) {
-            rightAns();
-        } else {
-            wrongAns();
-        }
-    });
-
-    // Event listener for fourth answer button, setting right/wrong conditions as well
-    fouAnsBtn.addEventListener('click', function(event) {
-        var element = event.target;
-
-        if (questCount === 4) {
-            rightAns();
-        } else {
-            wrongAns();
-        }
-    });
 }
 
 // Function for counting down timer on quiz
