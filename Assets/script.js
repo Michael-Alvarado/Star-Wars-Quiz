@@ -237,8 +237,6 @@ function highscores() {
     
     questSet.textContent = "Enter your initials:";
 
-    viewHighscores();
-
     restartBtn.style.display = 'initial';
 }
 
