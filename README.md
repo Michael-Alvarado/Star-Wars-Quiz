@@ -1,4 +1,4 @@
-# Code Quiz
+# Star Wars Quiz
 
 ## Table of Contents
 
@@ -10,7 +10,7 @@
 
 ## Description <a name = "Description"></a>
 
-Challenge was to create an quiz that had a start button, multiple questions, and a timer that would record your initials and score at the end of the quiz. HTML, CSS, and Javascript files were created from scratch.
+Quiz that prompts the user 5 questions based on the Star Wars film franchise. App has a start button, multiple questions, and a timer that records your initials and score at the end of the quiz. HTML, CSS, and Javascript files were created from scratch.
 
 ## Links <a name = "Links"></a>
 
